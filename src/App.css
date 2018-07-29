@@ -40,7 +40,7 @@
   linear-gradient(
     rgba(56,54, 58, 1), rgba(35, 33, 39, 1)
   );
-  height: 70px;
+  height: 60px;
   display: flex;
   justify-content: center; 
   box-shadow: 0 1px 6px 0 rgba(64,196,253,1);
@@ -84,6 +84,7 @@
   .topnav li {
     border-top: 1px solid #E6E6E6;
     padding: 1em; 
+    
   }
 
   @media (min-width: 992px) {
@@ -92,14 +93,17 @@
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
-      height: 70px;
+      height: 60px;
       transition: 0s;
       background-color: transparent;
       box-shadow: none; 
+      
     }
   .topnav li {
-        border: none;
-        padding: 0 0.5em; 
+        border-top: none;
+        border-right:1px solid rgb(65,63,68);
+        border-left:1px solid rgb(40,38,42);
+        padding: 1.2em 0.5em; 
       } 
   }
 
@@ -186,6 +190,6 @@ li a {
   input{
     background-color:black;
     border:none;
-    height:40px;
+    height:30px;
     color:white;
   }
