@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import movieLogo from './img/movie-logo.png'
 import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
@@ -19,28 +18,26 @@ class App extends Component {
     searchedMovies:[]
   }
 
-
+componentDidMount(){
+  //set upcoming movies as a default
+  this.upcoming()
+}
 
   updateQuery = (query) => {
     this.setState({
       query: query
     })
-
+    //if query is empty set default upcoming movies
     if(query === ''){
-      this.setState({
-        searchedMovies: []
-      })
+      this.upcoming()
     }else{
-
     const url = `${api}/search/movie?api_key=${apiKey}&query=${query}`
     fetch(url)
     .then(response => response.json())
-    
     .then((data) => {
+      //remove error on empty string, and set movies to default upcoming
     if(data.results.error){
-      this.setState({
-        searchedMovies: []
-      })
+        this.upcoming()
     }else{
     this.setState({searchedMovies: data.results})
     console.log(this.state.searchedMovies)
@@ -116,11 +113,16 @@ class App extends Component {
         <nav className="navigation">
           <div className="menu"><FontAwesomeIcon icon={faBars} onClick={this.openCloseMenu}/>
           </div>
-          <div className="main-logo" id="name">
-            <img src={movieLogo} alt="movie logo"/>
+          <div className="main-heading" id="name">
+            <h1>Movies</h1>
           </div>
           <ul className="topnav" id="nav">
-            <li>
+           
+            <li><a href="#about" className="tag" onClick={(event) => this.upcoming(event.target.value)}>Upcoming</a></li>
+            <li><a href="#skills" className="tag" onClick={(event) => this.topRated(event.target.value)}>Top Rated</a></li>
+            <li><a href="#portfolio" className="tag"  onClick={(event) => this.mostPopular(event.target.value)}>Popular</a></li>
+            <li><a href="#contact" className="tag" onClick={(event) => this.kidsPopular(event.target.value)}>Kids</a></li>
+            <li><a href="#contact" className="tag" onClick={(event) => this.dramas(event.target.value)}>Drama</a></li> <li>
               <DebounceInput
               element="input" 
               debounceTimeout={250} 
@@ -130,19 +132,12 @@ class App extends Component {
               onChange={(event) => this.updateQuery(event.target.value)}/>
               
             </li>
-            <li><a href="#about" className="tag" onClick={(event) => this.upcoming(event.target.value)}>Upcoming</a></li>
-            <li><a href="#skills" className="tag" onClick={(event) => this.topRated(event.target.value)}>Top Rated</a></li>
-            <li><a href="#portfolio" className="tag"  onClick={(event) => this.mostPopular(event.target.value)}>Popular</a></li>
-            <li><a href="#contact" className="tag" onClick={(event) => this.kidsPopular(event.target.value)}>Kids</a></li>
-            <li><a href="#contact" className="tag" onClick={(event) => this.dramas(event.target.value)}>Drama</a></li>
           </ul>
         </nav>
       </div>
     </header>
+    <section className="subheader"></section>
 
-<section className="background">
-
-</section>
 <div className="movie-container">
     {this.state.searchedMovies.map((movie) => (
     <Movies 
