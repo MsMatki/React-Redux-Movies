@@ -8,7 +8,7 @@ export default class Movies extends Component{
         const {movie} = this.props
         let poster = `http://image.tmdb.org/t/p/w185/${movie.poster_path}`
         
-       const styles = { backgroundImage:poster ? (`url(${poster})`) : null }
+       const styles = {width: '100%', height: '100%', backgroundImage:poster ? (`url(${poster})`) : null }
         return(
                 <div className="movie-item">
                     <div className="movie-cover" style={styles}>
