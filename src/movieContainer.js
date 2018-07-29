@@ -10,8 +10,6 @@ export default class Movies extends Component{
         
        const styles = { backgroundImage:poster ? (`url(${poster})`) : null }
         return(
-            
-            
                 <div className="movie-item">
                     <div className="movie-cover" style={styles}>
 
