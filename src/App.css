@@ -1,0 +1,182 @@
+
+  /* ========================== MAIN NAVIGATION ============================ */
+.menu {
+  float: right;
+  clear: left;
+  margin: 1em;
+  font-size: 1.1rem;
+  color: white; 
+}
+
+  @media (min-width: 768px) {
+    .menu {
+      display: none; 
+    } 
+  }
+
+.main-logo {
+  margin: 1.1em 0 0 1em;
+  float: left; 
+}
+  .main-logo img {
+    height:30px;
+    width:30px;
+    margin: 0; 
+}
+
+  @media (min-width: 768px) {
+    .main-logo {
+      margin: auto; 
+    }
+      .main-logo img {
+        margin-left: 0.6em; 
+    } 
+  }
+
+.wrapper {
+  z-index: 3;
+  width: 100%;
+  position: fixed;
+  background-color: black;
+  height: 70px;
+  display: flex;
+  justify-content: center; 
+}
+
+.navigation {
+  z-index: 3;
+  width: 100%;
+  position: fixed; 
+}
+
+  @media (min-width: 768px) {
+    .navigation {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      width: 720px; 
+    } 
+    }
+
+  @media (min-width: 992px) {
+    .navigation {
+      width: 960px; 
+    } 
+    }
+
+  @media (min-width: 1200px) {
+    .navigation {
+      width: 1140px; 
+    } 
+    }
+
+.topnav {
+  text-align: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  overflow-y: hidden;
+  height: 0;
+  z-index: 10;
+  background-color: white;
+  box-shadow: 0 3px 20px -10px black; 
+}
+
+  .topnav li {
+    border-top: 1px solid #E6E6E6;
+    padding: 1em; 
+  }
+
+  @media (min-width: 768px) {
+    .topnav {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      height: 70px;
+      transition: 0s;
+      background-color: transparent;
+      box-shadow: none; 
+    }
+  .topnav li {
+        border: none;
+        padding: 0 0.5em; 
+      } 
+  }
+
+li a {
+  color: black;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  font-size: 15px; 
+  text-decoration:none;
+}
+  @media (min-width: 768px) {
+    li a {
+      margin: 1em;
+      color: white; 
+    } 
+  }
+
+.current {
+  color: #C49B66; 
+}
+
+.tag:hover {
+  text-decoration: none;
+  color: #C49B66;
+  transition: 0.2s;
+  opacity: 0.5; 
+}
+
+.top {
+  width: 100%;
+  height: 20px;
+  transform: translateY(70px); 
+}
+/* ========================= RESPONSIVE CLASSES ============================ */
+.response {
+  height: 300px;
+  transition: 0.4s ease-in-out; 
+}
+  @media (min-width: 768px) {
+    .response {
+      height: 70px;
+      transition: none; 
+    } 
+  }
+/* ============================BACKGROUND IMAGE ============================== */
+
+.background{
+  background-image:url('img/img1.jpg');
+  height:500px;
+  background-size: cover;
+}
+
+  /* ========================== MOVIE CONTAINER ============================ */
+
+  .movie-container{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    padding:100px 50px;
+  }
+  .movie-item{
+    width:200px;
+    height:300px;
+    padding:1em;
+  }
+  @media(min-width:568px){
+    .movie-container{
+      flex-direction:row;
+      flex-wrap: wrap;
+    }
+  }
+  .movie-cover{
+    z-index: 1;
+    height:100%;
+    width:100%;
+  }
