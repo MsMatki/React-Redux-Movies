@@ -168,6 +168,7 @@ li a {
     width:200px;
     height:300px;
     padding:1em;
+   overflow: hidden;
   }
   @media(min-width:568px){
     .movie-container{
@@ -177,7 +178,7 @@ li a {
   }
   .movie-cover{
     z-index: 1;
-    height:100%;
-    width:100%;
     background-color:grey;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
