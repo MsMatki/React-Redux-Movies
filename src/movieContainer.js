@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
+import Movies from './Movie'
 
-export default class Movies extends Component{
-
-
+export default class MovieContainer extends Component{
 
     render(){
-        const {movie} = this.props
-        let poster = `http://image.tmdb.org/t/p/w185/${movie.poster_path}`
-        
-       const styles = {width: '100%', height: '100%', backgroundImage:poster ? (`url(${poster})`) : null }
         return(
-                <div className="movie-item">
-                    <div className="movie-cover" style={styles}>
-
+            <div className="movie-container">
+                <div className="wrap">
+                    {this.props.searchedMovies.map((movie) => (
+                    <Movies 
+                    key={movie.id}
+                    movie={movie}
+                    />
+                    ))}
                     </div>
                 </div>
         )
     }
 }
-
-/*http://image.tmdb.org/t/p/w185//nLRcqfvSYj2AKy9aG10Dx6bxUsS.jpg*/
