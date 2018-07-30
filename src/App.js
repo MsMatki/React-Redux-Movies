@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import Movies from './movieContainer'
-import {DebounceInput} from 'react-debounce-input';
-
-
+import MovieContainer from './MovieContainer'
+import Header from './Header'
+import Subheader from './Subheader'
+import { Route } from 'react-router-dom'
+import TvShows from './TvShows'
 
 const api = 'https://api.themoviedb.org/3'
 const apiKey = 'a9632aa4c0a084cd40a2f5f911739ec0'
@@ -13,7 +12,6 @@ const apiKey = 'a9632aa4c0a084cd40a2f5f911739ec0'
 class App extends Component {
 
   state = {
-    sidebar:'closed',
     query:'',
     searchedMovies:[]
   }
@@ -27,6 +25,12 @@ componentDidMount(){
     this.setState({
       query: query
     })
+    this.searchMovies()
+    
+  }
+
+    searchMovies = () => {
+      const {query} = this.state;
     //if query is empty set default upcoming movies
     if(query === ''){
       this.upcoming()
@@ -94,58 +98,28 @@ componentDidMount(){
     }).catch(error => console.log('Cant fetch any data', error))
   }
 
-  openCloseMenu = () => {
-    let ul = document.querySelector('.topnav')
-      if(this.state.sidebar === 'closed'){
-      ul.classList.add('response');
-      this.setState({sidebar: 'open'})
-      }else{
-        ul.classList.remove('response');
-        this.setState({sidebar: 'closed'})
-      }
-  }
-
   render() {
     return (
       <div className="App">
-       <header className="header">
-        <div className="wrapper" id="wrap">
-        <nav className="navigation">
-          <div className="menu"><FontAwesomeIcon icon={faBars} onClick={this.openCloseMenu}/>
-          </div>
-          <div className="main-heading" id="name">
-            <h1>Movies</h1>
-          </div>
-          <ul className="topnav" id="nav">
-           
-            <li><a href="#about" className="tag" onClick={(event) => this.upcoming(event.target.value)}>Upcoming</a></li>
-            <li><a href="#skills" className="tag" onClick={(event) => this.topRated(event.target.value)}>Top Rated</a></li>
-            <li><a href="#portfolio" className="tag"  onClick={(event) => this.mostPopular(event.target.value)}>Popular</a></li>
-            <li><a href="#contact" className="tag" onClick={(event) => this.kidsPopular(event.target.value)}>Kids</a></li>
-            <li><a href="#contact" className="tag" onClick={(event) => this.dramas(event.target.value)}>Drama</a></li> <li>
-              <DebounceInput
-              element="input" 
-              debounceTimeout={250} 
-              type="text" 
-              placeholder="Search" 
-              value={this.state.query}
-              onChange={(event) => this.updateQuery(event.target.value)}/>
-              
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <section className="subheader"></section>
-
-<div className="movie-container">
-    {this.state.searchedMovies.map((movie) => (
-    <Movies 
-      key={movie.id}
-      movie={movie}
+      <Route exact path="/" render={() => (
+        <div>
+      <Header query={this.state.query} updateQuery={this.updateQuery}/>
+      <Subheader 
+      mostPopular={this.mostPopular}
+      upcoming={this.upcoming}
+      topRated={this.topRated}
+      kidsPopular={this.kidsPopular}
+      dramas={this.dramas}
       />
-    ))}
-</div>
+      <MovieContainer searchedMovies={this.state.searchedMovies}/>
+      </div>
+    )} />
+     <Route path="/TvShows" render={({ history }) => (
+         <TvShows query={this.state.query} 
+         updateQuery={this.updateQuery}
+         searchedMovies={this.state.searchedMovies}
+         />
+        )}/>
       </div>
     );
   }
