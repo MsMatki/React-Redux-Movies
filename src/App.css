@@ -1,5 +1,11 @@
-
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
   /* ========================== MAIN NAVIGATION ============================ */
+
+
+ h2, h3, h4, h5{
+  font-family:'Josefin Sans';
+}
+
 .menu {
   float: right;
   clear: left;
@@ -7,8 +13,7 @@
   font-size: 1.1rem;
   color: white; 
 }
-
-  @media (min-width: 992px) {
+  @media (min-width: 867px) {
     .menu {
       display: none; 
     } 
@@ -19,17 +24,24 @@
   float: left; 
 }
   .main-heading h1 {
-    color:white;
+    color:rgb(3,151,214);
     margin: 0; 
+    text-transform: uppercase;
+    font-weight:normal;
+    font-size:1.6em;
+    
+}
+h1 span{
+  color:white;
+  font-family:Impact;
+  letter-spacing: 1px;
+  font-size:24px;
 }
 
-  @media (min-width: 992px) {
+  @media (min-width: 867px) {
     .main-heading {
       margin: auto; 
     }
-      .main-heading h1 {
-        margin-left: 0.6em; 
-    } 
   }
 
 .wrapper {
@@ -52,21 +64,17 @@
   position: fixed; 
 }
 
-  @media (min-width: 992px) {
+  @media (min-width: 867px) {
     .navigation {
       display: flex;
       flex-direction: row;
       justify-content: space-around;
       align-items: center;
-      width: 960px; 
+      
     } 
     }
 
-  @media (min-width: 1200px) {
-    .navigation {
-      width: 1140px; 
-    } 
-    }
+
 
 .topnav {
   text-align: center;
@@ -78,7 +86,6 @@
   height: 0;
   z-index: 10;
   background-color: white;
-  box-shadow: 0 3px 20px -10px black; 
 }
 
   .topnav li {
@@ -87,7 +94,7 @@
     
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: 867px) {
     .topnav {
       display: flex;
       flex-direction: row;
@@ -110,11 +117,12 @@
 li a {
   color: black;
   font-family: "Josefin Sans", sans-serif;
-  font-weight: bold;
-  font-size: 15px; 
+  font-size: 12px; 
   text-decoration:none;
+  text-transform: uppercase;
+
 }
-  @media (min-width: 992px) {
+  @media (min-width: 867px) {
     li a {
       margin: 1em;
       color: white; 
@@ -142,49 +150,100 @@ li a {
   height: 300px;
   transition: 0.4s ease-in-out; 
 }
-  @media (min-width: 992px) {
+  @media (min-width: 867px) {
     .response {
       height: 70px;
       transition: none; 
     } 
   }
-/* ============================BACKGROUND IMAGE ============================== */
+/* ============================ SUBHEADER SECTION ============================== */
 
 .subheader{
   background-color:rgb(28,27,30);
-  height:150px;
+  height:100px;
   background-size: cover;
+  padding-top:100px;
+  display:flex;
+  justify-content: center;
+  align-items:center;
 }
 
   /* ========================== MOVIE CONTAINER ============================ */
 
   .movie-container{
     display:flex;
-    flex-direction:column;
     justify-content: center;
     align-items:center;
-    padding:30px 50px;
+    padding:30px 10px;
     background-color:rgb(36,35,41);
   }
   .movie-item{
-    width:180px;
-    height:280px;
-    padding:1em;
-   overflow: hidden;
+    width:50vh;
+    height:70vh;
+    padding:2px 3px;
+    margin:5px;
+   background-color:rgb(43,42,45);
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction:column;
+    box-shadow: 0 0 4px rgba(0,0,0,0.5), 0 3px 6px rgba(0,0,0,0.5);
+    cursor:pointer;
+    transition:0.3s;
+  }
+  .movie-item:hover{
+    box-shadow: 0 0 4px white, 0 0 6px white;
+   
+  }
+  .text-container{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: nowrap;
+    background-color:black;
+    width:100%;
+    padding:10px 0;
+    text-transform: uppercase;
+    justify-content: center;
+    border:1px solid black;
+  }
+.text-container h6{
+  color:white;
+  margin:0;
+  white-space: nowrap;
+  overflow: hidden;
+  padding:0 5px;
+  font-weight:normal;
+}
+
+  .wrap{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction:column;
+  }
+  
+  .movie-cover{
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border:1px solid black;
+    position: relative;
   }
   @media(min-width:568px){
-    .movie-container{
+    .wrap{
       flex-direction:row;
       flex-wrap: wrap;
     }
+    .movie-item{
+      width:195px;
+      height:295px;
+    }
   }
-  .movie-cover{
-    z-index: 1;
-    background-color:grey;
-    background-repeat: no-repeat;
-    background-size: cover;
+  @media(min-width:2140px){
+    .movie-container{
+      width:2140px;
+    }
   }
-
   /* ========== INPUT ===============*/
 
   input{
@@ -193,3 +252,146 @@ li a {
     height:30px;
     color:white;
   }
+
+  /* ===================== MOVIE RATING ================= */
+  .movie-rating {
+    position: absolute;
+    right: 0px;
+    top:0px;
+    width: 40px;
+    height: 25px;
+    border-radius: 0 0 0 7px;
+    background: rgb(0,0,0, 0.7);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+    z-index:10;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.3);
+  }
+  .movie-rating h6{
+    color:white;
+
+  }
+  .star{
+    color:orange;
+    font-size:0.7em;
+    padding:0 2px 1px 0;
+  }
+
+/* ============ GENRE CONTAINER =================== */
+
+.genre-container{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+}
+
+
+.genre-container ul{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  flex-wrap:wrap;
+  align-items: center;
+  border-radius:3px;
+  padding:0;
+}
+
+.genre-container li{
+  list-style-type: none;
+  color:white;
+  padding:10px 10px;
+  margin-top:5px;
+  font-size:0.9rem;
+  cursor:pointer;
+  transition:0.2s;
+  font-family:'Josefin Sans';
+}
+.genre-container li:last-child{
+  border-right:none;
+}
+.genre-container li:hover{
+  box-shadow: 0 0 4px white, 0 0 6px white;
+}
+
+.suggestion{
+  padding:5px 10px;
+  margin-right:1em;
+  background-color:rgb(3,151,214);
+  border-radius:5px;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  
+}
+.suggestion h4{
+  margin:0;
+  color:white;
+  
+}
+.angle-left{
+  color:white;
+  padding:3px 0 0 10px;
+  font-size:1.3em;
+}
+
+/* ========================= @@@@ MEDIA QUERIES @@@@ ============= */
+
+@media(min-width:568px){
+  .genre-container{
+    justify-content: flex-start;
+    width:430px;
+  }
+  
+}
+@media(min-width:654px){
+   .genre-container{
+    width:630px;
+  }
+}
+@media(min-width:867px){
+  .navigation, 
+  .genre-container{
+    width:840px;
+  }
+}
+@media(min-width:1075px){
+  .navigation, 
+  .genre-container{
+    width:1050px;
+  }
+}
+@media(min-width:1287px){
+  .navigation,
+  .genre-container{
+    width:1260px;
+  }
+}
+@media(min-width:1495px){
+  .navigation,
+  .genre-container{
+    width:1470px;
+  }
+}
+@media(min-width:1705px){
+  .navigation,
+  .genre-container{
+    width:1680px;
+  }
+}
+@media(min-width:1920px){
+  .navigation,
+  .genre-container{
+    width:1900px;
+  }
+}
+@media(min-width:2131px){
+  .navigation,
+  .genre-container{
+    width:2100px;
+  }
+}
