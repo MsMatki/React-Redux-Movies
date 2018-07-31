@@ -85,7 +85,7 @@ h1 span{
   overflow-y: hidden;
   height: 0;
   z-index: 10;
-  background-color: white;
+  background-color: rgb(30,30,30);
 }
 
   .topnav li {
@@ -115,7 +115,7 @@ h1 span{
   }
 
 li a {
-  color: black;
+  color: white;
   font-family: "Josefin Sans", sans-serif;
   font-size: 12px; 
   text-decoration:none;
@@ -125,7 +125,6 @@ li a {
   @media (min-width: 867px) {
     li a {
       margin: 1em;
-      color: white; 
     } 
   }
 
@@ -147,7 +146,7 @@ li a {
 }
 /* ========================= RESPONSIVE CLASSES ============================ */
 .response {
-  height: 300px;
+  height: 170px;
   transition: 0.4s ease-in-out; 
 }
   @media (min-width: 867px) {
@@ -156,13 +155,22 @@ li a {
       transition: none; 
     } 
   }
+
+  .active{
+    background-color:rgb(52,52,52);
+  }
 /* ============================ SUBHEADER SECTION ============================== */
 
 .subheader{
-  background-color:rgb(28,27,30);
+  background:  radial-gradient(
+    circle,
+  rgb(46,45,51),
+    rgb(6,5,11)
+  );
+
   height:100px;
   background-size: cover;
-  padding-top:100px;
+  padding-top:60px;
   display:flex;
   justify-content: center;
   align-items:center;
@@ -175,7 +183,8 @@ li a {
     justify-content: center;
     align-items:center;
     padding:30px 10px;
-    background-color:rgb(36,35,41);
+    background-color:rgba(36,35,41);
+   
   }
   .movie-item{
     width:50vh;
@@ -187,12 +196,12 @@ li a {
     justify-content: center;
     align-items:center;
     flex-direction:column;
-    box-shadow: 0 0 4px rgba(0,0,0,0.5), 0 3px 6px rgba(0,0,0,0.5);
+    box-shadow: 0 0 4px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.6);
     cursor:pointer;
     transition:0.3s;
   }
   .movie-item:hover{
-    box-shadow: 0 0 4px white, 0 0 6px white;
+    box-shadow: 0 0 7px white, 0 0 7px white;
    
   }
   .text-container{
@@ -247,12 +256,16 @@ li a {
   /* ========== INPUT ===============*/
 
   input{
-    background-color:black;
+    background-color:rgb(25,25,25);
     border:none;
     height:30px;
+    width:300px;
+    border-radius:3px;
     color:white;
   }
-
+ ::placeholder{
+    padding-left:10px;
+  }
   /* ===================== MOVIE RATING ================= */
   .movie-rating {
     position: absolute;
@@ -303,12 +316,14 @@ li a {
 .genre-container li{
   list-style-type: none;
   color:white;
-  padding:10px 10px;
-  margin-top:5px;
-  font-size:0.9rem;
+  padding:14px 10px 10px 10px;
+  margin-right:10px;
+  font-size:0.8rem;
   cursor:pointer;
   transition:0.2s;
   font-family:'Josefin Sans';
+ text-transform: uppercase;
+ border-radius:4px;
 }
 .genre-container li:last-child{
   border-right:none;
@@ -318,25 +333,29 @@ li a {
 }
 
 .suggestion{
-  padding:5px 10px;
   margin-right:1em;
-  background-color:rgb(3,151,214);
+  margin-left:4px;
+  padding:5px 10px 5px 12px;
   border-radius:5px;
   display:flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  text-transform: uppercase;
+  background-color:orange;
   
 }
 .suggestion h4{
   margin:0;
-  color:white;
+  color:black;
+  font-family:Impact;
+  font-size:1.1em;
   
 }
 .angle-left{
-  color:white;
-  padding:3px 0 0 10px;
-  font-size:1.3em;
+  color:black;
+  padding:4px 0 2px 13px;
+  font-size:1.1em;
 }
 
 /* ========================= @@@@ MEDIA QUERIES @@@@ ============= */
@@ -383,7 +402,7 @@ li a {
     width:1680px;
   }
 }
-@media(min-width:1920px){
+@media(min-width:1919px){
   .navigation,
   .genre-container{
     width:1900px;
