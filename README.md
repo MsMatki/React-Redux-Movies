@@ -1,6 +1,6 @@
 # CoolMoviesBB React App
 
-CoolMoviesBB is a responsive React app that allows the user to search Movies and TvShows. This project is fetching data from The Movie Database https://www.themoviedb.org/.
+CoolMoviesBB is a responsive React-Redux app that allows the user to search Movies and TvShows. This project is fetching data from The Movie Database https://www.themoviedb.org/.
 
 ## Preview
 
@@ -34,7 +34,9 @@ Copyright 2018 By Bartol. Code released under the [MIT](https://github.com/MsMat
 ## Technologies Used
 
 * React.js - A JavaScript library for building user interfaces.
-* jQuery - Cross-platform JavaScript library.
+* Redux - Open-source JavaScript library for managing application state.
+* React Router - Standard routing library for React.
+* Thunk - A thunk is a function that wraps an expression to delay its evaluation.
 * DebounceInput - React component that renders an Input, Textarea or other element with debounced onChange. 
 * FontAwesome - The internet's most popular icon toolkit.
-* React Router - Standard routing library for React.
+* jQuery - Cross-platform JavaScript library.
