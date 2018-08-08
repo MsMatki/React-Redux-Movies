@@ -8,11 +8,10 @@ import {Provider} from 'react-redux'
 import store from './store'
 
 
+
 class App extends Component {
 
-  state = {
-    movieInfo:[]
-  }
+
   render() {
     return (
       <Provider store={store}>
@@ -24,7 +23,7 @@ class App extends Component {
          <TvShows/>
         )}/>
      <Route path="/MovieInfo" render={() => (
-                <MovieInfo movieInfo={this.props.movieInfo}/>
+                <MovieInfo/>
          
          )}/> 
       
