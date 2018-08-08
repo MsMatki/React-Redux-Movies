@@ -1,32 +1,22 @@
 import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {movieInfo} from './actions/movieActions'
+import {connect} from 'react-redux'
+
 const api = 'https://api.themoviedb.org/3'
 const apiKey = 'a9632aa4c0a084cd40a2f5f911739ec0'
 
-export default class Movie extends Component {
 
 
-    state = {
-        movieInfo:[]
-    }
+class Movie extends Component {
+   
 
-    movieInfo = () => {
-        const {movie} = this.props;
-        const {movieInfo} = this.state;
-
-        const url = `${api}/movie/${movie.id}?api_key=${apiKey}&append_to_response=videos,images`
-        fetch(url)
-        .then(response => response.json())
-        .then((data) => {
-        this.setState({movieInfo: movieInfo.push(data)})
-        console.log(movieInfo)
-        }).catch(error => console.log('Cant fetch any data', error))
-
+    movieSelected(id){
+        sessionStorage.setItem('movieId', id);
+        return false;
         }
-
-
 
     render(){
         const {movie} = this.props;
@@ -34,8 +24,9 @@ export default class Movie extends Component {
         
        const styles = {width: '100%', height: '100%', backgroundImage:poster ? (`url(${poster})`) : null }
         return(
-            <Link to="/MovieInfo">
-            <div className="movie-item" onClick={this.movieInfo}>
+            <div>
+                <Link to="/MovieInfo">
+            <div className="movie-item" onClick={(event) => {this.props.movieInfo(event.target.value), this.movieSelected(movie.id)}} >
                     <div className="movie-cover" style={styles}>
                         <div className="movie-rating"><span className="star"><FontAwesomeIcon icon={faStar}/></span><h6>{movie.vote_average}</h6></div>
                     </div>
@@ -44,10 +35,16 @@ export default class Movie extends Component {
                     </div>
             </div>
             </Link>
+        </div>
         )
     }
 }
 
 
+const mapStateToProps = state => ({
+    movies: state.movies.movieInfo,
+  })
+  
+  export default connect(mapStateToProps, {movieInfo})(Movie);
 
 /*http://image.tmdb.org/t/p/w185//nLRcqfvSYj2AKy9aG10Dx6bxUsS.jpg*/
