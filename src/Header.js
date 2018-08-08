@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import {DebounceInput} from 'react-debounce-input';
 import { Link } from 'react-router-dom'
 
@@ -32,18 +32,17 @@ export default class Header extends Component{
                 <h1>Cool<span>Movies</span>BB</h1>
               </div>
               <ul className="topnav" id="nav">
-              <li><Link to="/" >Movies</Link></li>
+              <li><Link to="/">Movies</Link></li>
                 <li><Link to="/TvShows" >Tv Shows</Link></li>
-                <li>
-                  <DebounceInput
-                  element="input" 
-                  debounceTimeout={300} 
-                  type="text" 
-                  placeholder="Search" 
-                  value={this.props.query}
-                  onChange={(event) => this.props.updateQuery(event.target.value)}/>
-                  
-                </li>
+                  <li>
+                    <DebounceInput
+                    element="input" 
+                    debounceTimeout={300} 
+                    type="text" 
+                    placeholder="Search..." 
+                    value={this.props.query}
+                    onChange={(event) => this.props.searchData(event.target.value)}/>
+                  </li>
               </ul>
             </nav>
           </div>
