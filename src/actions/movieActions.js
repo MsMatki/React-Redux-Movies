@@ -1,7 +1,9 @@
-import {FETCH_POPULAR, FETCH_UPCOMING, FETCH_TOP_RATED, FETCH_KIDS_POPULAR, FETCH_NOW_PLAYING} from './types'
+import {FETCH_POPULAR, FETCH_UPCOMING, FETCH_TOP_RATED, FETCH_KIDS_POPULAR, FETCH_NOW_PLAYING, FETCH_SEARCH, FETCH_TV_POPULAR, FETCH_TV_TOP_RATED, FETCH_TV_ON_THE_AIR, FETCH_TV_AIRING_TODAY, FETCH_TV_SEARCH, FETCH_MOVIE_INFO} from './types'
+
 
 const api = 'https://api.themoviedb.org/3'
 const apiKey = 'a9632aa4c0a084cd40a2f5f911739ec0'
+
 
 export const mostPopular = () => dispatch => {
    
@@ -62,3 +64,101 @@ export const nowPlaying = () => dispatch => {
     }))
 
 }
+
+export const searchMovies = (query) => dispatch => {
+const url = `${api}/search/movie?api_key=${apiKey}&query=${query}`
+
+if(query === ''){
+    dispatch(upcoming())
+  }else{
+fetch(url)
+.then(response => response.json())
+.then((movies) => {
+  //remove error on empty string, and set movies to default upcoming
+if(movies.results.error){
+    dispatch(upcoming())
+}else{
+dispatch({
+    type:FETCH_SEARCH,
+    payload: movies.results
+})
+}
+}).catch(error => console.log('Cant fetch any data', error))
+  }
+}
+
+// Tv shows actions 
+export const tvPopular = () => dispatch => {
+const url = `${api}/tv/popular?api_key=${apiKey}&language=en-US&page=1`
+fetch(url)
+.then(response => response.json())
+.then(shows => dispatch({
+    type:FETCH_TV_POPULAR,
+    payload: shows.results
+}))
+}
+
+export const tvTopRated = () => dispatch => {
+    const url = `${api}/tv/top_rated?api_key=${apiKey}&language=en-US&page=1`
+    fetch(url)
+    .then(response => response.json())
+    .then(shows => dispatch({
+        type:FETCH_TV_TOP_RATED,
+        payload: shows.results
+    }))
+  }
+
+  export const tvOnTheAir = () => dispatch => {
+    const url = `${api}/tv/on_the_air?api_key=${apiKey}&language=en-US&page=1`
+    fetch(url)
+    .then(response => response.json())
+    .then(shows => dispatch({
+        type:FETCH_TV_ON_THE_AIR,
+        payload: shows.results
+    }))
+  }
+
+  export const airingToday = () => dispatch => {
+    const url = `${api}/tv/airing_today?api_key=${apiKey}&language=en-US&page=1`
+    fetch(url)
+    .then(response => response.json())
+    .then(shows => dispatch({
+        type:FETCH_TV_AIRING_TODAY,
+        payload: shows.results
+    }))
+  }
+
+  export const searchTvShows = (query) => dispatch => {
+  //if query is empty set default upcoming movies
+  if(query === ''){
+    dispatch(tvPopular())
+  }else{
+  const url = `${api}/search/tv?api_key=${apiKey}&query=${query}`
+  fetch(url)
+  .then(response => response.json())
+  .then((shows) => {
+    //remove error on empty string, and set movies to default upcoming
+  if(shows.results.error){
+     dispatch(tvPopular())
+  }else{
+    dispatch({
+        type:FETCH_TV_SEARCH,
+        payload: shows.results
+    })
+  }
+  }).catch(error => console.log('Cant fetch any data', error))
+}
+}
+
+//movie Info
+export const movieInfo = () => dispatch => {
+    let movieId = sessionStorage.getItem('movieId');
+     const url = `${api}/movie/${movieId}?api_key=${apiKey}&append_to_response=videos,images`
+     fetch(url)
+     .then(response => response.json())
+     .then((info) => dispatch({
+         type:FETCH_MOVIE_INFO,
+         payload: info
+     })).catch(error => console.log('Cant fetch any data', error))
+
+ }
