@@ -7,8 +7,6 @@ import $ from "jquery";
 import {connect} from 'react-redux'
 import {mostPopular, upcoming, topRated, kidsPopular, nowPlaying, searchMovies} from './actions/movieActions'
 
-const api = 'https://api.themoviedb.org/3'
-const apiKey = 'a9632aa4c0a084cd40a2f5f911739ec0'
 
 class Movies extends Component{
 
@@ -20,8 +18,14 @@ class Movies extends Component{
       //set upcoming movies as a default
       this.props.upcoming()
       this.resetQueryOnClick()
-    
+     
     }
+
+    setFetchMovies(){
+      sessionStorage.setItem('Page', 'movie');
+      return false;
+      }
+
     
     resetQueryOnClick = () => {
       let list = document.querySelectorAll('.list li')
@@ -70,8 +74,8 @@ class Movies extends Component{
                         nowPlaying={this.props.nowPlaying}
                         setActive={this.setActive}
                     />
-                <MovieContainer movies={this.props.movies} movieInfo={this.props.GetMovieInfo}/>
-                
+                <MovieContainer movies={this.props.movies} setPage={this.setFetchMovies}/>
+  
             </div>
         )
     }
