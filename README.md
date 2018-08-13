@@ -4,7 +4,7 @@ CoolMoviesBB is a responsive React-Redux app that allows the user to search Movi
 
 ## Preview
 
-You can check the live website [Here](https://msmatki.github.io/React-Movies/)
+You can check the live website [Here](https://msmatki.github.io/React-Redux-Movies/)
 
 ## Screenshot
 
