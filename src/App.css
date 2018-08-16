@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
   /* ========================== MAIN NAVIGATION ============================ */
 
 
@@ -413,4 +414,178 @@ li a {
   .genre-container{
     width:2100px;
   }
+}
+
+
+.info-title{
+  color:white;
+}
+
+/* ====================== MOVIE INFO ============================= */
+
+.infoSection{
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+.infoBox{
+  display:flex;
+  box-sizing:border-box;
+  background-color:rgba(0,0,0,0.7);
+  flex-wrap:wrap;
+  flex-direction:column;
+  justify-content: space-between;
+  margin:1em;
+  border-radius:5px;
+}
+
+.outer-container {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.85) 10%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.95) 90%);
+  background-attachment: fixed;
+  margin:0;
+  height: 100%;
+  width:100%;
+  display:flex;
+  justify-content: center;
+  align-items:center
+}
+
+.poster img{
+ height:100%;
+ width:100%;
+}
+
+.info{
+  padding:2em 0.5em;
+}
+
+
+.detail-container{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  width:90%;
+}
+
+.column{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+
+.movie-name h1{
+  margin:0;
+  text-transform: uppercase;
+  color:white;
+  font-size:2.5em;
+}
+.overview h2{
+  color:orange;
+  font-family: "Oswald";
+  font-weight: normal;
+}
+.overview p{
+  color:white;
+  font-size:1em;
+}
+.genres-companies h2{
+  color:orange;
+  font-family: "Oswald";
+  font-weight: normal;
+}
+.genres-companies p{
+  color:white;
+}
+.details{
+  margin-bottom:10px;
+}
+.details h3{
+  color:white;
+  font-family: "Oswald";
+  font-weight: normal;
+  margin:0;
+}
+.details h2{
+  color:orange;
+  font-family: "Oswald";
+  font-weight: normal;
+  margin:0;
+}
+
+.links{
+  display:flex;
+  cursor: pointer;
+}
+.li{
+  list-style-type:none;
+  background-color:rgba(80,80,80,0.5);
+  margin:16px 10px 16px 0;
+  padding:14px 0;
+}
+.link{
+  box-sizing: border-box;
+  padding:15px 15px;
+  text-decoration: none;
+  color:white;
+  font-size:14px;
+  font-family: "Oswald";
+  letter-spacing: 1px;
+}
+
+.link:hover{
+  color:black;
+  background-color:orange;
+  transition:0.2s;
+}
+
+
+@media(min-width:568px){
+  .container-box{
+    width:530px;
+  }
+}
+
+@media(min-width:867px){
+  .container-box{
+    width:830px;
+    margin:3em;
+  }
+  .infoBox{
+    flex-direction:row;
+    margin:1em;
+  }
+  .poster{
+    width:48%;
+  }
+  .info{
+    width:48%;
+}
+}
+@media(min-width:1075px){
+  .container-box{
+    width:1030px;
+  }
+  .poster{
+    width:43%;
+    
+  }
+  .info{
+    width:53%;
+}
+}
+
+@media(min-width:1495px){
+  .container-box{
+    width:1470px;
+  }
+}
+
+.main-footer{
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+  background:black;
+  color:grey;
+  height:100px;
 }
