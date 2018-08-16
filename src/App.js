@@ -8,10 +8,9 @@ import {Provider} from 'react-redux'
 import store from './store'
 
 
-
 class App extends Component {
 
-
+ 
   render() {
     return (
       <Provider store={store}>
@@ -22,11 +21,13 @@ class App extends Component {
      <Route path="/TvShows" render={() => (
          <TvShows/>
         )}/>
-     <Route path="/MovieInfo" render={() => (
-                <MovieInfo/>
-         
+    <Route path="/MovieInfo" render={() => (
+        <MovieInfo/>
          )}/> 
       
+      <footer className="main-footer">
+        <h4>Designed & developed by Bartol Bilankov</h4>
+      </footer>
       </div>
       </Provider>
     );
