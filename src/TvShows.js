@@ -7,15 +7,17 @@ import {connect} from 'react-redux'
 import {tvPopular, tvTopRated, tvOnTheAir, airingToday, searchTvShows} from './actions/movieActions'
 
 
-const api = 'https://api.themoviedb.org/3'
-const apiKey = 'a9632aa4c0a084cd40a2f5f911739ec0'
-
 class TvShows extends Component{
     
       componentDidMount(){
         this.props.tvPopular()
         this.resetQuery();
       }
+
+      setFetchShow(){
+        sessionStorage.setItem('Page', 'tv');
+        return false;
+        }
 
 
       componentDidUpdate(){
@@ -47,6 +49,7 @@ class TvShows extends Component{
 
 
     render(){
+      console.log(this.props.movies)
         return(
             <div>
                 <Header query={this.props.query} searchData={this.props.searchTvShows}/>
@@ -57,7 +60,7 @@ class TvShows extends Component{
                     airingToday={this.props.airingToday}
                     setActive={this.setActive}
                     />
-                <MovieContainer movies={this.props.movies}/>
+                <MovieContainer movies={this.props.movies} setPage={this.setFetchShow}/>
             </div>
         )
     }
