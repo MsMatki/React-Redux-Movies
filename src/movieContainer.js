@@ -1,20 +1,22 @@
-import React, { Component } from 'react';
-import Movies from './Movie'
+import React from 'react';
+import Movie from './Movie'
 
-export default class MovieContainer extends Component{
+const MovieContainer = props => {
 
-    render(){
         return(
             <div className="movie-container">
                 <div className="wrap">
-                    {this.props.searchedMovies.map((movie) => (
-                    <Movies 
+                    {props.movies.map((movie) => (
+                    <Movie
+                    getInfo={props.getInfo}
                     key={movie.id}
                     movie={movie}
+                    setPage={props.setPage}
                     />
                     ))}
                     </div>
                 </div>
         )
-    }
 }
+
+export default MovieContainer;
