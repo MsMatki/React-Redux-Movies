@@ -8,10 +8,10 @@ import {tvPopular, tvTopRated, tvOnTheAir, airingToday, searchTvShows} from './a
 
 
 class TvShows extends Component{
-    
+   
+
       componentDidMount(){
         this.props.tvPopular()
-        this.resetQuery();
       }
 
       setFetchShow(){
@@ -24,35 +24,17 @@ class TvShows extends Component{
         this.setActive()
       }
       
-      setActive = () => {
-          let {query} = this.props
-              if(query !== ''){
-                $('.list .active').removeClass('active');
-              }
-              $('.list li').click(function () {
-                $('.list .active').removeClass('active');
-                $(this).addClass('active');
-              }) 
-        }
-
-      resetQuery = () => {
-        let list = document.querySelectorAll('.list li')
-        list.forEach((li) => {
-          li.addEventListener('click', () => {
-            this.setState({
-              query: ''
-            })
-          })
-        })
+       setActive = () => {
+            $('.list li').click(function () {
+              $('.list .active').removeClass('active');
+              $(this).addClass('active');
+            }) 
       }
 
-
-
     render(){
-      console.log(this.props.movies)
         return(
             <div>
-                <Header query={this.props.query} searchData={this.props.searchTvShows}/>
+                <Header searchData={this.props.searchTvShows}/>
                 <GenreTv 
                     tvPopular={this.props.tvPopular}
                     tvTopRated={this.props.tvTopRated}
