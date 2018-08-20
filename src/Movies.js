@@ -10,49 +10,21 @@ import {mostPopular, upcoming, topRated, kidsPopular, nowPlaying, searchMovies} 
 
 class Movies extends Component{
 
-   state = {
-     query:''
-   }
-    
     componentDidMount(){
       //set upcoming movies as a default
       this.props.upcoming()
-      this.resetQueryOnClick()
-     
     }
 
     setFetchMovies(){
       sessionStorage.setItem('Page', 'movie');
       return false;
       }
-
-    
-    resetQueryOnClick = () => {
-      let list = document.querySelectorAll('.list li')
-      list.forEach((li) => {
-        li.addEventListener('click', () => {
-          this.setState({
-            query: ''
-          })
-        })
-      })
-    }
-    
-    resetQuery = () => {
-      this.setState({
-        query: ''
-      })
-    }
     
     componentDidUpdate(){
       this.setActive()
     }
     
     setActive = () => {
-        let {query} = this.state
-            if(query !== ''){
-              $('.list .active').removeClass('active');
-            }
             $('.list li').click(function () {
               $('.list .active').removeClass('active');
               $(this).addClass('active');
@@ -62,7 +34,7 @@ class Movies extends Component{
     render(){
         return(
             <div>
-                <Header query={this.state.query} 
+                <Header 
                 searchData={this.props.searchMovies}
 
                 />
