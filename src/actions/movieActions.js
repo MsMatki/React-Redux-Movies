@@ -1,4 +1,5 @@
 import {FETCH_POPULAR, FETCH_UPCOMING, FETCH_TOP_RATED, FETCH_KIDS_POPULAR, FETCH_NOW_PLAYING, FETCH_SEARCH, FETCH_TV_POPULAR, FETCH_TV_TOP_RATED, FETCH_TV_ON_THE_AIR, FETCH_TV_AIRING_TODAY, FETCH_TV_SEARCH} from './types'
+import $ from 'jquery';
 
 
 const api = 'https://api.themoviedb.org/3'
@@ -16,6 +17,7 @@ export const mostPopular = () => dispatch => {
 }
 
 export const upcoming = () => dispatch => {
+    $('.list .card').addClass('active');
     const url = `${api}/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`
     fetch(url)
     .then(response => response.json())
@@ -61,6 +63,8 @@ const url = `${api}/search/movie?api_key=${apiKey}&query=${query}`
 if(query === ''){
     dispatch(upcoming())
   }else{
+    $('.list .active').removeClass('active');
+
 fetch(url)
 .then(response => response.json())
 .then((movies) => {
@@ -79,6 +83,7 @@ dispatch({
 
 // Tv shows actions 
 export const tvPopular = () => dispatch => {
+    $('.list .card').addClass('active');
 const url = `${api}/tv/popular?api_key=${apiKey}&language=en-US&page=1`
 fetch(url)
 .then(response => response.json())
@@ -119,11 +124,13 @@ export const tvTopRated = () => dispatch => {
   }
 
   export const searchTvShows = (query) => dispatch => {
+    const url = `${api}/search/tv?api_key=${apiKey}&query=${query}`
   //if query is empty set default upcoming movies
   if(query === ''){
     dispatch(tvPopular())
   }else{
-  const url = `${api}/search/tv?api_key=${apiKey}&query=${query}`
+     $('.list .active').removeClass('active');
+
   fetch(url)
   .then(response => response.json())
   .then((shows) => {
