@@ -39,9 +39,7 @@ class MovieInfo extends Component{
                 background: data.backdrop_path,
                 runtime: data.runtime,
                 episodeRuntime: data.episode_run_time,
-                status: data.status,
-                homepage: data.homepage,
-                rating: data.vote_average
+                homepage: data.homepage
              }
             }else{
                 info={name: "Sorry couldn't retrieve any data"}
