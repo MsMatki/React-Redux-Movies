@@ -1,6 +1,7 @@
 import React from 'react';
 import Movie from './Movie'
 
+
 const MovieContainer = props => {
 
         return(
@@ -8,10 +9,10 @@ const MovieContainer = props => {
                 <div className="wrap">
                     {props.movies.map((movie) => (
                     <Movie
-                    getInfo={props.getInfo}
-                    key={movie.id}
-                    movie={movie}
-                    setPage={props.setPage}
+                        getInfo={props.getInfo}
+                        key={movie.id}
+                        movie={movie}
+                        setPage={props.setPage}
                     />
                     ))}
                     </div>
